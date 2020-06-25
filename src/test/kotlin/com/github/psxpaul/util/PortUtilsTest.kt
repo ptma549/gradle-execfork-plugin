@@ -28,7 +28,7 @@ class PortUtilsTest {
         }
     }
 
-    @Test(timeout=2000)
+    @Test(timeout=3000)
     fun testWaitForPortOpen_timeout() {
         val stubProcess:Process = StubProcess()
         val port = findOpenPort()
