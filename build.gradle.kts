@@ -1,35 +1,35 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 
 plugins {
-    id("com.gradle.plugin-publish").version("0.12.0")
+    id("com.gradle.plugin-publish").version("0.9.7")
     id("org.jetbrains.kotlin.jvm").version("1.3.41")
     id("idea")
     id("maven")
+    id("java-gradle-plugin")
 }
 
-group = "com.github.hesch"
+group = "com.github.psxpaul"
 version = File("VERSION").readText().trim()
 buildDir = File("build/gradle")
 
 dependencies {
-    implementation(gradleApi())
-    implementation("org.jetbrains.kotlin:kotlin-stdlib:1.3.41")
-    implementation("org.jetbrains.kotlin:kotlin-reflect:1.3.41")
+    compile(gradleApi())
+    compile("org.jetbrains.kotlin:kotlin-stdlib:1.3.41")
+    compile("org.jetbrains.kotlin:kotlin-reflect:1.3.41")
 
-    testImplementation("junit:junit:4.12")
-    testImplementation("org.hamcrest:hamcrest-all:1.3")
-    testImplementation("io.mockk:mockk:1.10.0")
+    testCompile("junit:junit:4.12")
+    testCompile("org.hamcrest:hamcrest-all:1.3")
 }
 
 pluginBundle {
-    website = "https://github.com/hesch/gradle-execfork-plugin"
-    vcsUrl = "https://github.com/hesch/gradle-execfork-plugin"
-    description = "Execute Java or shell processes in the background during a build. Forked from psxpaul/execfork with a small logging bugfix."
+    website = "http://github.com/psxpaul"
+    vcsUrl = "https://github.com/psxpaul/gradle-execfork-plugin"
+    description = "Execute Java or shell processes in the background during a build"
     tags = listOf("java", "exec", "background", "process")
 
     (plugins) {
         create("execForkPlugin") {
-            id = "com.github.hesch.execfork"
+            id = "com.github.psxpaul.execfork"
             displayName = "Gradle Exec Fork Plugin"
         }
     }
